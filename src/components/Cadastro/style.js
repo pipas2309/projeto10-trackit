@@ -7,7 +7,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20% auto;
+    margin: calc(50px + 5%) auto 0 auto;
 
     form {
         width: 303px;
@@ -45,6 +45,9 @@ const Button = styled.button`
     width: 303px;
     height: 45px;
     margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #fff;
     font-size: 21px;
     background-color: #52B6FF;
@@ -75,5 +78,5 @@ export {
     Button,
     Title,
     Image,
-    Container,
+    Container
 }
