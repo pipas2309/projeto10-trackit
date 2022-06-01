@@ -9,6 +9,7 @@ import logo from '../../media/track.png';
 import { useState } from "react";
 
 export default function Cadastro() {
+    
 
     const URL_CADASTRO_API = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up"
     const navigate = useNavigate();
