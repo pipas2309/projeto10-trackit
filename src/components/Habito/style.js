@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Habits = styled.div`
     max-width: 340px;
-    height: 94px;
+    min-height: 94px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -16,8 +16,8 @@ const Habits = styled.div`
 `;
 
 const Check = styled.div`
-    width: 69px;
-    height: 69px;
+    min-width: 69px;
+    min-height: 69px;
     border-radius: 5px;
     background-color: ${props => props.done ? '#8FC549' : '#E7E7E7'};
     display: flex;

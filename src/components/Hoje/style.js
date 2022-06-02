@@ -3,9 +3,15 @@ import styled from "styled-components";
 const Container = styled.div`
     width: 100%;
     height: 100%;
+    min-height: 100vmax;
     background-color: #e5e5e5;
-    padding: 70px 18px;
-    position: absolute;
+    padding: 70px 18px 80px 18px;
+
+
+    span {
+        display: flex;
+        justify-content: center;
+    }
 `;
 
 const NavTitle = styled.div`

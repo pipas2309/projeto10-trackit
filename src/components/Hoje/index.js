@@ -41,11 +41,12 @@ export default function Hoje () {
         const promise = axios.get(URL_API_LISTA_HABITOS_HOJE, config);
         promise.then(({data}) => {
             setMeusHabitos(data);
+            contaProgresso(data);
         });
         promise.catch((resp) => {
             navigate('/');
         });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+
     },[])
     
     
@@ -57,25 +58,32 @@ export default function Hoje () {
 
         if (habitosAtualizados.done) {
             const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habitosAtualizados.id}/uncheck`;
-            axios.post(URL, {}, config)
+            const promise = axios.post(URL, {}, config);
+            promise.then(resp => console.log('Desmarcado'));
+            promise.catch(resp => console.log(resp));
             habitosAtualizados.currentSequence -= 1;
         } else {
             const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habitosAtualizados.id}/check`;
-            axios.post(URL, {}, config)
+            const promise = axios.post(URL, {}, config);
+            promise.then(resp => console.log('Marcado'));
+            promise.catch(resp => console.log(resp));
             habitosAtualizados.currentSequence += 1;
         }
 
         habitosAtualizados.done = !habitosAtualizados.done;
 
-        contaProgresso(atualizando)
-        setMeusHabitos(atualizando)
-        console.log(atualizando)
+        contaProgresso(atualizando);
+        setMeusHabitos(atualizando);
     }
 
 
     function contaProgresso(habitos) {
         const habitosConcluidos = habitos.filter((value) => value.done === true).length;
         const progresso = Math.ceil((habitosConcluidos / habitos.length) * 100);
+        if(isNaN(progresso)) {
+            setPercentage(0)
+            return;
+        }
         setPercentage(progresso);
     }   
 
@@ -91,12 +99,16 @@ export default function Hoje () {
             )
             ;
         } else {
-            return <ThreeDots color="#126BA5" height={80} width={80} />
+            return (
+            <span>
+                <ThreeDots color="#126BA5" height={80} width={80} />
+            </span>
+            );
         }
     }
     
     function porcentagem() {
-        if(percentage === 0) {
+        if(percentage === 0 || isNaN(percentage)) {
             return (<p>Nenhum hábito concluído ainda</p>)
         } else {
             return (<p>{percentage}% dos hábitos concluídos</p>)
@@ -112,7 +124,7 @@ export default function Hoje () {
         <>
             
             <Container>
-            <Header />
+                <Header />
                 <NavTitle percentage={percentage}>
                     <h3>{day}</h3>
                     {minhaPorcentagem}
