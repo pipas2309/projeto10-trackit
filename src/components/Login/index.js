@@ -81,14 +81,23 @@ export default function Login() {
                 logar(e);
                 setCarregando(true)
                 }}>
-                <Input type='email' onChange={(e) => setEmail(e.target.value)} value={email} placeholder="email" required />
-                <Input type='password' onChange={(e) => setPassword(e.target.value)} value={password} placeholder="senha" required />
+
                 {carregando ? //Ternário para Botão
+                <>
+                    <Input type='email' onChange={(e) => setEmail(e.target.value)} value={email} placeholder="email" disabled />
+                    <Input type='password' onChange={(e) => setPassword(e.target.value)} value={password} placeholder="senha" disabled />
                     <Button disabled type="submit">
                         <ThreeDots color="#FFF" height={80} width={80} />
                     </Button>
+                </>
+                    
                 :
+                <>
+                    <Input type='email' onChange={(e) => setEmail(e.target.value)} value={email} placeholder="email" required />
+                    <Input type='password' onChange={(e) => setPassword(e.target.value)} value={password} placeholder="senha" required />
                     <Button type="submit">Entrar</Button>
+                </>
+                    
                 }
             </form>
             <Link to="/cadastro">

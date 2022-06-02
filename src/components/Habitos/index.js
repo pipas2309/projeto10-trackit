@@ -5,27 +5,22 @@ import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
 
 //Contexts
-import UserContext from "../../contexts/UserContext";
 import TokenContext from "../../contexts/TokenContext";
 
 //Components
 import Footer from "../Footer";
 import Header from "../Header";
 import HabitosConfig from "../HabitosConfig";
-
-//Media and CSS
-import { Container, NavTitle, Margin } from "./style";
-import plus from '../../media/plus.png';
 import HabitoNovo from "../HabitoNovo";
 
-
-
+//Media and CSS
+import { Container, NavTitle } from "./style";
+import plus from '../../media/plus.png';
 
 
 export default function Habitos() {
     
     const URL_API_LISTA_HABITOS = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits';
-    const { percentage, setPercentage } = useContext(UserContext);
     const { token } = useContext(TokenContext);
         const config = {
         headers: {
@@ -77,6 +72,13 @@ export default function Habitos() {
     
     function listarHabitos() {
         if(habitos) {
+            if(habitos.length === 0) {
+                return (
+                    <p>Você não tem nenhum hábito cadastrado ainda. <br />
+                    Adicione um hábito para começar a trackear!
+                    </p>
+                );
+            }
             return (
                 habitos.map((value, index) => 
                 <HabitosConfig deletar={deletar} habito={value} index={index} />
@@ -88,7 +90,6 @@ export default function Habitos() {
             </span>
             );
         }
-
     }
     
     const novoHabito = criarHabito(criar);
@@ -97,8 +98,7 @@ export default function Habitos() {
         return (
             <>
                 <Header />
-                <Container>
-                    
+                <Container>                    
                     <NavTitle>
                         <h3>Meus hábitos</h3>
                         <div onClick={() => setCriar(!criar)}>
@@ -106,14 +106,9 @@ export default function Habitos() {
                         </div>
                     </NavTitle>
                     {novoHabito}
-                    {meusHabitos}
-                    
+                    {meusHabitos}                
                 </Container>
                 <Footer />
             </>
         );
-}
-
-function Criar() {
-
 }

@@ -1,8 +1,9 @@
+//MEDIA and CSS
 import { Days, Details, Habits, Trash } from "./style";
 import trash from '../../media/trash.png';
 
 export default function HabitosConfig( {habito, deletar, index} ) {
-    const {id, name, days} = habito;
+    const { days} = habito;
   
     return (
         <>

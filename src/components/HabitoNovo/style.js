@@ -38,6 +38,9 @@ const Buttons = styled.div`
         background-color: #fff;
         color: #52B6FF;
         border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     button:nth-child(2) {

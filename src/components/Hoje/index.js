@@ -4,28 +4,22 @@ import { useNavigate } from "react-router-dom";
 import 'dayjs/locale/pt-br';
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
+import dayjs from "dayjs";
 
 //Contexts
 import TokenContext from "../../contexts/TokenContext";
 import UserContext from "../../contexts/UserContext";
 
-
-
 //Components
 import Header from "../Header";
 import Footer from "../Footer";
-
 import Habito from "../Habito";
 
 //Media and CSS
-
-import dayjs from "dayjs";
 import { Container, NavTitle } from "./style";
 
 
-
 export default function Hoje () {
-    
     const URL_API_LISTA_HABITOS_HOJE = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today';
     const { percentage, setPercentage } = useContext(UserContext);
     const { token } = useContext(TokenContext);
@@ -89,6 +83,13 @@ export default function Hoje () {
 
     function tenhoHabitos() {
         if(meusHabitos) {
+            if(meusHabitos.length === 0) {
+                return (
+                    <p>Você não tem nenhum hábito cadastrado para a {aux2}. <br />
+                    Crie um hábito para fazer hoje e comece a trackear!
+                    </p>
+                );
+            }
             return (
                 meusHabitos.map((value, index) => <Habito 
                 key={value.id}
@@ -115,8 +116,10 @@ export default function Hoje () {
         }
     }
 
-    let aux = dayjs().locale('pt-br').format('dddd, DD/MM');
+    const aux = dayjs().locale('pt-br').format('dddd, DD/MM');
+    const aux2 = dayjs().locale('pt-br').format('dddd');
     const day = aux.charAt(0).toUpperCase() + aux.slice(1);
+    
     const listaHabitos = tenhoHabitos();
     const minhaPorcentagem = porcentagem();
 

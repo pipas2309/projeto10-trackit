@@ -1,3 +1,4 @@
+//Media and CSS
 import { Check, Details, Habits } from "./style";
 import checkIco from '../../media/check.png'
 

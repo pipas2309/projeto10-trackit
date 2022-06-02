@@ -50,16 +50,24 @@ export default function Cadastro() {
                 e.preventDefault(cadastrar(e));
                 setCarregando(true)
                 }}>
-                <Input type='email' placeholder="email" required/>
-                <Input type='password' placeholder="senha" required/>
-                <Input type='name' placeholder="nome" required/>
-                <Input type='url' placeholder="foto" required/>
                 {carregando ?
-                    <Button disabled type="submit">
-                        <ThreeDots color="#FFF" height={80} width={80} />
-                    </Button>
-                :
-                    <Button type="submit">Cadastrar</Button>
+                    <>
+                        <Input type='email' placeholder="email" disabled />
+                        <Input type='password' placeholder="senha" disabled />
+                        <Input type='name' placeholder="nome" disabled />
+                        <Input type='url' placeholder="foto" disabled />
+                        <Button disabled type="submit">
+                            <ThreeDots color="#FFF" height={80} width={80} />
+                        </Button>
+                    </>
+                :   
+                    <>
+                        <Input type='email' placeholder="email" required />
+                        <Input type='password' placeholder="senha" required />
+                        <Input type='name' placeholder="nome" required />
+                        <Input type='url' placeholder="foto" required />
+                        <Button type="submit">Cadastrar</Button>
+                    </>
                 }
                 
             </form>
