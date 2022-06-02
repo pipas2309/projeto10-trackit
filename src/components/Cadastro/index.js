@@ -2,11 +2,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { ThreeDots } from 'react-loader-spinner';
+import { useState } from "react";
 
 //Media e CSS
 import { Button, Container, Image, Input, Title } from "./style";
 import logo from '../../media/track.png';
-import { useState } from "react";
+
 
 export default function Cadastro() {
     
@@ -43,7 +44,7 @@ export default function Cadastro() {
 
     return (
         <Container>
-            <Image src={logo} />
+            <Image src={logo} alt='logo' />
             <Title>TrackIt</Title>
             <form onSubmit={(e) => {
                 e.preventDefault(cadastrar(e));

@@ -7,7 +7,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: calc(50px + 5%) auto 0 auto;
+    margin: calc(50px + 5%) 0 0 0;
     
     
     form {

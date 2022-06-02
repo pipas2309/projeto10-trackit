@@ -75,7 +75,7 @@ export default function Login() {
     //RENDER
     return (
         <Container>
-            <Image src={logo} />
+            <Image src={logo} alt='logo' />
             <Title>TrackIt</Title>
             <form onSubmit={(e) => {
                 logar(e);

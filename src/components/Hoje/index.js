@@ -1,7 +1,20 @@
+//Libs
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+//Contexts
 import TokenContext from "../../contexts/TokenContext";
 import UserContext from "../../contexts/UserContext";
+
+
+
+//Components
+import Header from "../Header";
+import Footer from "../Footer";
+
+//Media and CSS
+
+
 
 export default function Hoje () {
     const { user } = useContext(UserContext);
@@ -9,6 +22,8 @@ export default function Hoje () {
     const navigate = useNavigate()
     return (
         <>
+            <Header />
+            
             <button onClick={() => {
                 localStorage.removeItem("user");
                 navigate('/')
@@ -19,10 +34,11 @@ export default function Hoje () {
             
             <p><br></br>User</p>
             <p>ID: {user.id}</p>
+            <img src={user.image}/>
             <p>Nome: {user.name}</p>
-            <img src={user.image} alt='img' />
-            <p>email: {user.email}</p>
-            <p>senha: {user.password}</p>
+
+            <Footer />
         </>
     );
 }
+
