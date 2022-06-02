@@ -53,9 +53,9 @@ const Button = styled.button`
     background-color: #52B6FF;
     border-radius: 4px;
     border: none;
-    transition: 0.5s;
+    transition: 0.2s;
 
-    &:hover {
+    &:active {
         font-size: 25px;
         background-color: #38aafd;
     }
