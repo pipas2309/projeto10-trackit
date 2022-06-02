@@ -12,7 +12,7 @@ import HabitsContext from './contexts/HabitsContext';
 import Cadastro from './components/Cadastro';
 import Login from './components/Login';
 import Hoje from './components/Hoje';
-import Habitos from './components/Habitos';
+import Habitos from './components/Habito';
 import Historico from './components/Historico';
 
 function App() {
